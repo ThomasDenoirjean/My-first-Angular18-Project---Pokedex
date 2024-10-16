@@ -6,16 +6,14 @@ import { Pokemon } from './pokemon.interface';
 @Injectable({
     providedIn: 'root'
 })    
-export class FetchRandomPokemonService {
+export class FetchPokemonByRandomService {
     NUMBER_OF_POKEMON = 1025
-
-    randomNumber = Math.floor(Math.random() * (this.NUMBER_OF_POKEMON + 1))
-
-    private apiUrl = `https://pokeapi.co/api/v2/pokemon/${this.randomNumber}/`;
 
     constructor(private http: HttpClient) { }
 
-    getRandomPokemon(): Observable<Pokemon> {
-        return this.http.get<Pokemon>(this.apiUrl);
+    getPokemonByRandom(): Observable<Pokemon> {
+        let randomNumber = Math.floor(Math.random() * (this.NUMBER_OF_POKEMON + 1))
+        let apiUrl = `https://pokeapi.co/api/v2/pokemon/${randomNumber}/`;
+        return this.http.get<Pokemon>(apiUrl);
     }
 }

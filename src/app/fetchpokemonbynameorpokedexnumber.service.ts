@@ -6,11 +6,11 @@ import { Pokemon } from './pokemon.interface';
 @Injectable({
     providedIn: 'root'
 })    
-export class FetchPokemonByNameService {
+export class FetchPokemonByNameOrPokedexNumberService {
     constructor(private http: HttpClient) { }
 
-    getPokemonByName(pokemonName: string): Observable<Pokemon> {
-        const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
+    getPokemonByNameorPokedexNumber(pokemonNameOrPokedexNumber: string | number): Observable<Pokemon> {
+        const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrPokedexNumber}/`;
         return this.http.get<Pokemon>(apiUrl);
     }
 }

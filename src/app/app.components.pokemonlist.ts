@@ -1,11 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FetchPokemonByTypeService } from './fetchpokemonbytype.service';
+import { FetchPokemonsByTypeService } from './fetchpokemonsbytype.service';
 import { NgFor } from '@angular/common';
 import { Pokemon } from './pokemon.interface';
-import { FetchPokemonByNameService } from './fetchpokemonbyname.service';
+import { FetchPokemonByNameOrPokedexNumberService } from './fetchpokemonbynameorpokedexnumber.service';
+import { FetchPokemonsByGenerationService } from './fetchpokemonsbygeneration.service';
 
-// pour la suite : passer les urls des pokemons en input.
+// pour la suite : passer les urls des pokemons en inputde pokemon card
+// mettre un defer avec une petite animation de pokéball
+
+// doit recevoir une liste soit de pokémon par type soir par génération
 
 @Component({
     selector: 'pokemon-list',
@@ -13,27 +17,52 @@ import { FetchPokemonByNameService } from './fetchpokemonbyname.service';
     imports: [RouterOutlet, NgFor ],
     styleUrl: './app.component.css',
     template: `
-    <h1> Pokemon list </h1>
     <span *ngFor="let pokemonImageUrl of pokemonUrlList">
-        <img [src]="pokemonImageUrl" alt="Photo de pokemon" height="100">
+        <img [src]="pokemonImageUrl" alt="Sprite not downloaded" height="100">
     </span>
   `,
 })
-export class PokemonList implements OnInit {
+export class PokemonList implements OnChanges {
+    @Input() type: string = '';
+    @Input() generation: number = -1;
+
     pokemonUrlList: string[] = [];
 
     constructor(
-        private fetchPokemonByTypeService: FetchPokemonByTypeService, 
-        private fetchPokemonByNameService: FetchPokemonByNameService
+        private fetchPokemonsByTypeService: FetchPokemonsByTypeService, 
+        private fetchPokemonsByGenerationService: FetchPokemonsByGenerationService, 
+        private fetchPokemonByNameOrPokedexNumberService: FetchPokemonByNameOrPokedexNumberService
     ) { }
 
-    ngOnInit(): void {
-        this.fetchPokemonByTypeService.getPokemonsByType().subscribe((response) => {
-            response.forEach(pokemon => {
-                this.fetchPokemonByNameService.getPokemonByName(pokemon.name).subscribe((pokemonDetail: Pokemon) => {
-                    this.pokemonUrlList.push(pokemonDetail.sprites.front_default);
+    ngOnChanges(changes: SimpleChanges): void {
+        if (changes['type'] && this.type) {
+            try {
+                this.pokemonUrlList = [];
+
+                this.fetchPokemonsByTypeService.getPokemonsByType(this.type).subscribe((response) => {
+                    response.forEach(pokemon => {
+                        this.fetchPokemonByNameOrPokedexNumberService.getPokemonByNameorPokedexNumber(pokemon.name).subscribe((pokemonDetail: Pokemon) => {
+                            this.pokemonUrlList.push(pokemonDetail.sprites.front_default);
+                        });
+                    });
                 });
-            });
-        });
+            } catch(error) {
+                console.log('error in app.components.pokemonlist.ts: ', error)
+            }
+        } else if (this.generation && this.generation != -1) {
+            try {
+                this.pokemonUrlList = [];
+
+                this.fetchPokemonsByGenerationService.getPokemonsByGeneration(this.generation).subscribe((response) => {
+                    response.forEach(pokemon => {
+                        this.fetchPokemonByNameOrPokedexNumberService.getPokemonByNameorPokedexNumber(pokemon.name).subscribe((pokemonDetail: Pokemon) => {
+                            this.pokemonUrlList.push(pokemonDetail.sprites.front_default);
+                        });
+                    });
+                });
+            } catch(error) {
+                console.log('error in app.components.pokemonlist.ts: ', error)
+            }
+        }
     }
 }

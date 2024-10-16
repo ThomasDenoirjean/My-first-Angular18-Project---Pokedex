@@ -6,20 +6,20 @@ import { Pokemon } from './pokemon.interface';
 export interface PokemonTypeResponse {
     pokemon: {
         pokemon: Pokemon;
-        slot: number; // Position dans le type
+        slot: number;
     }[];
 }
 
 @Injectable({
     providedIn: 'root'
 })    
-export class FetchPokemonByTypeService {
-    private apiUrl = 'https://pokeapi.co/api/v2/type/ground/';
-
+export class FetchPokemonsByTypeService {
     constructor(private http: HttpClient) { }
 
-    getPokemonsByType(): Observable<Pokemon[]> {
-        return this.http.get<PokemonTypeResponse>(this.apiUrl).pipe(
+    getPokemonsByType(type: string): Observable<Pokemon[]> {
+        let apiUrl = `https://pokeapi.co/api/v2/type/${type}/`;
+
+        return this.http.get<PokemonTypeResponse>(apiUrl).pipe(
             map(response => response.pokemon.map(p => p.pokemon))
         );
     }
