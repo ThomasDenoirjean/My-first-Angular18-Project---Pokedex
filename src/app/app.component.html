@@ -41,12 +41,17 @@
 
         <pokemon-list [type] = "type.toLowerCase()" [generation] = "generation" />
         
-        <!-- BUG sur le passage de l'input getPokemonByRandom -->
         <pokemon-card [getPokemonByRandom] = "getPokemonByRandom" [nameOrPokedexNumber] = "nameOrPokedexNumber" 
-        (pokemonFetched) = "getPokemonByRandom = false"/>
+        (pokemonFetched) = "getPokemonByRandom = false" (pokemonClicked) = "onPokemonClicked($event)" />
     </div>
     <div class="pokemon-team">
       <h1>Your pokemon team</h1>
+      @for (pokemonUrl of pokemonsToDisplayUrls; track pokemonUrl) {
+        <!-- " -->
+         <team-pokemon-card [pokemonUrl] = "pokemonUrl" 
+         (pokemonToRemove) = "onPokemonToRemove($event)"></team-pokemon-card>
+      } @empty {
+        <h3>Click on a pokemon to add it to your team</h3>}
     </div>
   
   
