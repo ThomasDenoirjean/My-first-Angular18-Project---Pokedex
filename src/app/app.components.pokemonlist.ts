@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { FetchPokemonsByTypeService } from './fetchpokemonsbytype.service';
 import { NgFor } from '@angular/common';
@@ -18,13 +18,15 @@ import { FetchPokemonsByGenerationService } from './fetchpokemonsbygeneration.se
     styleUrl: './app.component.css',
     template: `
     <span *ngFor="let pokemonImageUrl of pokemonUrlList">
-        <img [src]="pokemonImageUrl" alt="Sprite not downloaded" height="100">
+        <img [src]="pokemonImageUrl" alt="Sprite not downloaded" height="100" (click)="emitPokemonUrl(pokemonImageUrl)">
     </span>
   `,
 })
 export class PokemonList implements OnChanges {
     @Input() type: string = '';
     @Input() generation: number = -1;
+
+    @Output() pokemonClicked = new EventEmitter<string>();
 
     pokemonUrlList: string[] = [];
 
@@ -33,6 +35,11 @@ export class PokemonList implements OnChanges {
         private fetchPokemonsByGenerationService: FetchPokemonsByGenerationService, 
         private fetchPokemonByNameOrPokedexNumberService: FetchPokemonByNameOrPokedexNumberService
     ) { }
+
+    emitPokemonUrl(pokemonUrl: string) {
+        this.pokemonClicked.emit(pokemonUrl);
+    }
+
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['type'] && this.type) {

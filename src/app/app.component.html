@@ -58,7 +58,7 @@
         <!-- implémenter un système de double filtre génération + type si les deux sont saisis ? -->
         <!--  -->
         <ng-container *ngIf="displayMode == 'multiple_pokemons'">
-          <pokemon-list [type]="type.toLowerCase()" [generation]="generation" />
+          <pokemon-list [type]="type.toLowerCase()" [generation]="generation" (pokemonClicked)="onPokemonClicked($event)" />
         </ng-container>
         }
       </div>
