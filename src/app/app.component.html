@@ -1,62 +1,76 @@
 <style>
-.content {
-  display: inline-flex;
-}
+  .content {
+    display: inline-flex;
+  }
 
-.pokemon-selector {
-  width: 60vw;
-  border: solid 1px red;
-}
+  .pokemon-selector {
+    width: 60vw;
+    border: solid 1px red;
+  }
 
-.pokemon-team {
-  width: 30vw;
-  border: solid 1px red;
-}
+  .pokemon-team {
+    width: 30vw;
+    border: solid 1px red;
+  }
 
-.pokemon-search-bar {
-  display: inline-flex;
-}
+  .pokemon-search-bar {
+    display: inline-flex;
+  }
 </style>
 
 <main class="main">
   <div class="content">
     <div class="pokemon-selector">
       <h1>Select your pokemon</h1>
-        <div class="pokemon-search-bar">
-          <button (click)="getPokemonByRandom = true">Get a random pokemon</button>
+      <div class="pokemon-search-bar">
+        <div class="single-pokemon-search">
+          <button (click)="getPokemonByRandom = true" (click)="displayMode = 'single_pokemon'">Get a random
+            pokemon</button>
+          <div>
+            <h3>Filter by name or</h3>
+            <h3>pokedex number</h3>
+            <!-- Voir si on peut faire ça de manière plus élégante mais pb avec le click qui ne passait pas à travers la div single pokemon-->
+            <input [(ngModel)]="nameOrPokedexNumber" (click)="displayMode = 'single_pokemon'">
+          </div>
+        </div>
+        <div class="multiple-pokemon-search" (click)="displayMode = 'multiple_pokemons'">
           <div>
             <h3>Filter by type</h3>
+            <h2>{{ type }}</h2>
             <input [(ngModel)]="type">
           </div>
           <div>
             <h3>Filter by generation</h3>
             <input [(ngModel)]="generation">
           </div>
-          <div>
-            <h3>Filter by name or</h3>
-            <h3>pokedex number</h3>
-            <input [(ngModel)]="nameOrPokedexNumber">
-          </div>
         </div>
+      </div>
+      <div>
+        @if (displayMode == 'single_pokemon') {
+        <pokemon-card [getPokemonByRandom]="getPokemonByRandom" [nameOrPokedexNumber]="nameOrPokedexNumber"
+          (pokemonFetched)="getPokemonByRandom = false" (pokemonClicked)="onPokemonClicked($event)" />
+        }
 
-        <pokemon-list [type] = "type.toLowerCase()" [generation] = "generation" />
-        
-        <pokemon-card [getPokemonByRandom] = "getPokemonByRandom" [nameOrPokedexNumber] = "nameOrPokedexNumber" 
-        (pokemonFetched) = "getPokemonByRandom = false" (pokemonClicked) = "onPokemonClicked($event)" />
+        @if (displayMode == 'multiple_pokemons') {
+        <!--  -->
+        <!-- implémenter le pokemonClicked sur la liste de pokémons -->
+        <!--  -->
+        <!-- implémenter un système de double filtre génération + type si les deux sont saisis ? -->
+        <!--  -->
+        <ng-container *ngIf="displayMode == 'multiple_pokemons'">
+          <pokemon-list [type]="type.toLowerCase()" [generation]="generation" />
+        </ng-container>
+        }
+      </div>
     </div>
     <div class="pokemon-team">
       <h1>Your pokemon team</h1>
       @for (pokemonUrl of pokemonsToDisplayUrls; track pokemonUrl) {
-        <!-- " -->
-         <team-pokemon-card [pokemonUrl] = "pokemonUrl" 
-         (pokemonToRemove) = "onPokemonToRemove($event)"></team-pokemon-card>
+      <!-- " -->
+      <team-pokemon-card [pokemonUrl]="pokemonUrl" (pokemonToRemove)="onPokemonToRemove($event)"></team-pokemon-card>
       } @empty {
-        <h3>Click on a pokemon to add it to your team</h3>}
+      <h3>Click on a pokemon to add it to your team</h3>}
     </div>
-  
-  
-
-  
   </div>
 </main>
 
