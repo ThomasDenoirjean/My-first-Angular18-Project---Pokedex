@@ -1,6 +1,6 @@
 import { bootstrapApplication } from '@angular/platform-browser';
 import { appConfig } from './app/app.config';
-import { TeamSelectionComponent } from './app/app.component.teamselection';
+import { AppRoot } from './app/app.component.root';
 
-bootstrapApplication(TeamSelectionComponent, appConfig)
+bootstrapApplication(AppRoot, appConfig)
   .catch((err) => console.error(err));
