@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { RouterOutlet } from '@angular/router';
 import { PokemonCard } from './app.components.pokemoncard';
 import { PokemonList } from './app.components.pokemonlist';
 import { TeamPokemonCard } from './app.component.teampokemoncard';
+import {RouterOutlet, RouterLink} from '@angular/router';
 
 @Component({
-  selector: 'app-root',
+  selector: 'team-selection',
   standalone: true,
-  imports: [RouterOutlet, PokemonCard, PokemonList, TeamPokemonCard, FormsModule, CommonModule],
-  templateUrl: './app.component.html',
+  imports: [RouterOutlet, RouterLink, PokemonCard, PokemonList, TeamPokemonCard, FormsModule, CommonModule],
+  templateUrl: './app.component.teamselection.html',
   styleUrl: './app.component.css'
 })
-export class AppComponent {
+export class TeamSelectionComponent {
   type = '';
   generation!: number;
   getPokemonByRandom: boolean = false;

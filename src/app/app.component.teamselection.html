@@ -19,6 +19,14 @@
 </style>
 
 <main class="main">
+  <div>
+    <nav>
+      <a routerLink="/">Team Selection</a>
+      |
+      <a routerLink="/moves">Moves Browser</a>
+    </nav>
+    <router-outlet />
+  </div>
   <div class="content">
     <div class="pokemon-selector">
       <h1>Select your pokemon</h1>
@@ -52,8 +60,6 @@
         }
 
         @if (displayMode == 'multiple_pokemons') {
-        <!--  -->
-        <!-- implémenter le pokemonClicked sur la liste de pokémons -->
         <!--  -->
         <!-- implémenter un système de double filtre génération + type si les deux sont saisis ? -->
         <!--  -->

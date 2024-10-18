@@ -2,16 +2,16 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { provideHttpClient } from '@angular/common/http';
 
-import { AppComponent } from './app.component';
+import { TeamSelectionComponent } from './app.component.teamselection';
 
 @NgModule({
   declarations: [
-    AppComponent
+    TeamSelectionComponent
   ],
   imports: [
     BrowserModule,
   ],
   providers: [provideHttpClient()],
-  bootstrap: [AppComponent]
+  bootstrap: [TeamSelectionComponent]
 })
 export class AppModule { }
