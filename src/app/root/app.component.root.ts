@@ -1,6 +1,5 @@
 import { Component } from "@angular/core";
 import { RouterOutlet, RouterLink } from "@angular/router";
-import { Pokemon } from '../pokemon.interface'
 
 @Component({
     selector: 'app-root',
@@ -9,5 +8,4 @@ import { Pokemon } from '../pokemon.interface'
     templateUrl: './app.component.root.html',
 })
 export class AppRoot {
-    pokemonTeam: Pokemon[] = []
 }  
