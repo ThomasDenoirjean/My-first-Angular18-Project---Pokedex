@@ -1,5 +1,5 @@
 import { TestBed } from '@angular/core/testing';
-import { TeamSelectionComponent } from './app.component.teamselection';
+import { TeamSelectionComponent } from './teamselection/app.component.teamselection';
 
 describe('TeamSelectionComponent', () => {
   beforeEach(async () => {

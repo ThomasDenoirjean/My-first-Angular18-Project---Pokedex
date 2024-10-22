@@ -1,0 +1,17 @@
+.content {
+    display: inline-flex;
+}
+
+.pokemon-selector {
+    width: 60vw;
+    border: solid 1px red;
+}
+
+.pokemon-team {
+    width: 30vw;
+    border: solid 1px red;
+}
+
+.pokemon-search-bar {
+    display: inline-flex;
+}

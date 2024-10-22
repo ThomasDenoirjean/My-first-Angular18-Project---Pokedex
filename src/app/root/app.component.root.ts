@@ -1,13 +1,13 @@
 import { Component } from "@angular/core";
 import { RouterOutlet, RouterLink } from "@angular/router";
+import { Pokemon } from '../pokemon.interface'
 
 @Component({
-    selector: 'moves-browser',
+    selector: 'app-root',
     standalone: true,
     imports: [RouterOutlet, RouterLink],
-    templateUrl: './app.component.movesbrowser.html',
-    styleUrl: './app.component.css'
+    templateUrl: './app.component.root.html',
 })
-export class PokemonMovesBrower {
-    
+export class AppRoot {
+    pokemonTeam: Pokemon[] = []
 }  

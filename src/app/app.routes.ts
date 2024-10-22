@@ -1,7 +1,7 @@
 import {Routes} from '@angular/router';
 
-import {TeamSelectionComponent} from './app.component.teamselection';
-import {PokemonMovesBrower} from './app.component.movesbrowser';
+import {TeamSelectionComponent} from './teamselection/app.component.teamselection';
+import {PokemonMovesBrower} from './movesbrowser/app.component.movesbrowser';
 
 export const routes: Routes = [
   {

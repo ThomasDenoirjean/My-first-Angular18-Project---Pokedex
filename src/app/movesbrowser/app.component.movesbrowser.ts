@@ -2,12 +2,11 @@ import { Component } from "@angular/core";
 import { RouterOutlet, RouterLink } from "@angular/router";
 
 @Component({
-    selector: 'app-root',
+    selector: 'moves-browser',
     standalone: true,
     imports: [RouterOutlet, RouterLink],
-    templateUrl: './app.component.root.html',
-    styleUrl: './app.component.css'
+    templateUrl: './app.component.movesbrowser.html',
 })
-export class AppRoot {
+export class PokemonMovesBrower {
     
 }  
