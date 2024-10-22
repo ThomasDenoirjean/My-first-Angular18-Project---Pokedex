@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import { RouterOutlet, RouterLink } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -15,7 +15,7 @@ import { Pokemon } from '../pokemon.interface';
   templateUrl: './app.component.teamselection.html',
   styleUrl: './app.component.teamselection.css'
 })
-export class TeamSelectionComponent {
+export class TeamSelectionComponent implements OnInit {
   @Input() pokemonsToDisplay: Pokemon[] = []
 
   @Output() pokemonClicked = new EventEmitter<Pokemon>();
@@ -29,6 +29,13 @@ export class TeamSelectionComponent {
   private NUMBER_OF_POKEMON_TO_DISPLAY: number = 6;
 
   constructor(private teamService: TeamService) {}
+
+    ngOnInit(): void {
+      this.teamService.pokemonTeam$.subscribe((team: Pokemon[]) => {
+        this.pokemonsToDisplay = team;
+        console.log('Updated Pokemon team:', this.pokemonsToDisplay);
+      });
+  }
 
   changeGetPokemonByRandomValue() {
     this.getPokemonByRandom = !this.getPokemonByRandom
