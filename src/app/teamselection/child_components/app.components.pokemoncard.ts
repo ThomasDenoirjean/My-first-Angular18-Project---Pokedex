@@ -11,7 +11,7 @@ import { Pokemon } from '../../pokemon.interface';
     template: `
     <div (click)="emitPokemon()">
         @if (pokemonToDisplay) {
-        <img [src]="pokemonToDisplay.sprites.front_default" alt="Photo de pokemon" height="100">
+        <img [src]="pokemonToDisplay.sprites.official_front_default" alt="Photo de pokemon" height="100">
         }
     </div>
   `,
@@ -42,22 +42,12 @@ export class PokemonCard implements OnChanges {
             }
 
             this.fetchPokemonByNameOrPokedexNumberService.getPokemonByNameorPokedexNumber(this.nameOrPokedexNumber).subscribe((response: Pokemon) => {
-                this.pokemonToDisplay = {
-                    name: response.name,
-                    sprites: {
-                        front_default: response.sprites.front_default,
-                    }    
-                }
+                this.pokemonToDisplay = response
             })
 
         } else if (this.getPokemonByRandom) {
             this.fetchPokemonByRandomService.getPokemonByRandom().subscribe((response: Pokemon) => {
-                this.pokemonToDisplay = {
-                    name: response.name,
-                    sprites: {
-                        front_default: response.sprites.front_default,
-                    }    
-                }
+                this.pokemonToDisplay = response
             })
             this.pokemonFetched.emit('Random pokemon fetched');
         }   

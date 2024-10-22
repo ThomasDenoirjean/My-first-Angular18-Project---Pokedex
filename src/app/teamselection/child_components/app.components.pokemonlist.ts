@@ -19,7 +19,7 @@ import { FetchPokemonsByGenerationService } from '../services/fetchpokemonsbygen
     imports: [RouterOutlet, NgFor],
     template: `
     <span *ngFor="let pokemon of pokemonsList">
-        <img [src]="pokemon.sprites.front_default" alt="Sprite not downloaded" height="100" (click)="emitPokemon(pokemon)">
+        <img [src]="pokemon.sprites.official_front_default" alt="Sprite not downloaded" height="100" (click)="emitPokemon(pokemon)">
     </span>
   `,
 })

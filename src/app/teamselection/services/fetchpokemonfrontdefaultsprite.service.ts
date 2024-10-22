@@ -12,7 +12,7 @@ export class FetchPokemonFrontDefaultSpriteService {
         const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonName}/`;
 
         return this.http.get<any>(apiUrl).pipe(
-            map(response => response.sprites.front_default)
+            map(response => response.sprites.other['official-artwork'].front_default)
         );
     }
 }

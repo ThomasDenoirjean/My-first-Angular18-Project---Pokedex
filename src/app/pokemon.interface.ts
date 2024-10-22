@@ -1,6 +1,6 @@
 export interface Pokemon {
     name : string,
     sprites: {
-        front_default: string;
+        official_front_default: string;
     };
 }

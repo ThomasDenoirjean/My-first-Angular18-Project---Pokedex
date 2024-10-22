@@ -11,6 +11,11 @@ export class FetchPokemonByNameOrPokedexNumberService {
 
     getPokemonByNameorPokedexNumber(pokemonNameOrPokedexNumber: string | number): Observable<Pokemon> {
         const apiUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrPokedexNumber}/`;
-        return this.http.get<Pokemon>(apiUrl);
+        return this.http.get<any>(apiUrl).pipe(
+            map(response => ({
+                name: response.name,
+                sprites: { official_front_default: response.sprites.other['official-artwork'].front_default }
+            } as Pokemon))
+        );
     }
 }
