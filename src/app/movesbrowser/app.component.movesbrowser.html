@@ -1,8 +1,8 @@
 <main class="main">
-    <div class="content">
+    <div class="moves-browser-tilte">
         <h1>Browse through pokemon moves</h1>
     </div>
-    <div>
+    <div class="moves-pokemon-card-wrapper">
         @for (pokemon of pokemonTeam; track pokemon) {
             <moves-pokemon-card [pokemon]="pokemon"> </moves-pokemon-card>
         }

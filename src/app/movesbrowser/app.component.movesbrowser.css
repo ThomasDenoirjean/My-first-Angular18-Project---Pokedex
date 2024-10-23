@@ -1,0 +1,11 @@
+.moves-browser-tilte {
+    display: flex;
+    justify-content: center;
+}
+
+.moves-pokemon-card-wrapper {
+    display: grid;
+    justify-items: center;
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+}

@@ -9,6 +9,7 @@ import { TeamService } from "../teamupdate.service";
     standalone: true,
     imports: [RouterOutlet, RouterLink, MovesPokemonCard],
     templateUrl: './app.component.movesbrowser.html',
+    styleUrl: './app.component.movesbrowser.css',
 })
 export class PokemonMovesBrower implements OnInit {
     pokemonTeam!: Pokemon[]
