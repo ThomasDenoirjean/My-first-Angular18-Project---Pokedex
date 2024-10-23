@@ -1,11 +1,10 @@
-<style>
-
-</style>
-
-
 <main class="main">
     <div class="content">
         <h1>Browse through pokemon moves</h1>
     </div>
-    <!-- Afficher la liste de mooves des pokemons sélectionnés dans l'équipe -->
+    <div>
+        @for (pokemon of pokemonTeam; track pokemon) {
+            <moves-pokemon-card [pokemon]="pokemon"> </moves-pokemon-card>
+        }
+    </div>
 </main>
