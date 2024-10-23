@@ -1,0 +1,11 @@
+<div class="moves-pokemon-card">
+    @if (pokemon) {
+    <img [src]="pokemon.sprites.official_front_default" alt="Photo de pokemon" class="pokemon-image">
+    }
+    <div class="moves-list">
+        @for (slot of selectedMovesList; track $index) {
+            <moves-field [availableMovesList]="availableMovesList" [moveIndex]="$index"
+            [selectedMovesList]="selectedMovesList" (moveSelected)="onMoveSelected($event)"> </moves-field>
+        }
+    </div>
+</div>

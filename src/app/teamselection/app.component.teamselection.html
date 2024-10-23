@@ -37,7 +37,6 @@
         <!--  -->
         <ng-container *ngIf="displayMode == 'multiple_pokemons'">
           <pokemon-list [type]="type.toLowerCase()" [generation]="generation" (pokemonClicked)="onPokemonClicked($event)" />
-          <!-- <pokemon-list [type]="type.toLowerCase()" [generation]="generation"/> -->
         </ng-container>
         }
       </div>

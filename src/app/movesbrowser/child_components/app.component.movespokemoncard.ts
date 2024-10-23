@@ -7,25 +7,14 @@ import { FetchPokemonMovesService } from "../services/fetchpokemonmoves.service"
     selector: 'moves-pokemon-card',
     standalone: true,
     imports: [MovesField],
-    template: `
-    <div>
-        @if (pokemon) {
-        <img [src]="pokemon.sprites.official_front_default" alt="Photo de pokemon" height="100">
-        }
-        <div>
-            @for (slot of selectedMovesList; track $index) {
-                <moves-field [availableMovesList]="availableMovesList" [moveIndex]="$index"
-                [selectedMovesList]="selectedMovesList" (moveSelected)="onMoveSelected($event)"> </moves-field>
-            }
-        </div>
-    </div>
-    `,
+    templateUrl: './app.component.movespokemoncard.html',
+    styleUrl: './app.component.movespokemoncard.css'
 })
 export class MovesPokemonCard implements OnInit {
     @Input() pokemon!: Pokemon;
 
     availableMovesList!: string[]
-    selectedMovesList: string[] = ['', '', '', '']; /// utiliser pour créer les slots, trouver un autre moyen de le faire ?
+    selectedMovesList: string[] = ['', '', '', ''];
 
     constructor(
         private fetchPokemonMovesService: FetchPokemonMovesService
