@@ -6,6 +6,7 @@
 .moves-pokemon-card-wrapper {
     display: grid;
     justify-items: center;
+    justify-content: center;
     grid-template-columns: auto auto auto;
     gap: 10px;
 }

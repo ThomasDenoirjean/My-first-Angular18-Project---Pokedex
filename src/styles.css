@@ -18,12 +18,18 @@ body {
     background-color: #191D34;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4,
+h5 {
     color: #E7E8E9;
     font-family: 'PixelatedFont', sans-serif;
 }
 
-input[type="text"], button, select {
+input[type="text"],
+button,
+select {
     font-family: 'PixelatedFont', sans-serif;
 }
 
@@ -42,4 +48,32 @@ option {
     margin: 1vw;
     background-color: #30354B;
     border-radius: 25px;
+}
+
+.team-pokemon-image {
+    height: 120px;
+    margin: 1vw;
+    background-color: #191D34;
+    border-radius: 25px;
+} 
+
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
+}
+
+.call-to-action-message {
+    color: #FF1F1F;
 }

@@ -1,28 +1,26 @@
 <main class="main">
   <div class="team-selection-wrapper">
-    <h2>Select your pokemon</h2>
     <div class="team-selection-content">
       <div class="pokemon-selector">
         <div class="pokemon-search">
-          <div class="single-pokemon-search">
-            <div class="search-field">
-              <h4>Filter by name or <br> pokedex number</h4>
-              <!-- Voir si on peut faire ça de manière plus élégante mais pb avec le click qui ne passait pas à travers la div single pokemon-->
-              <input type="text" [(ngModel)]="nameOrPokedexNumber" (click)="displayMode = 'single_pokemon'">
-            </div>
+          <h2 class="pokemon-search-title">Select your pokemons</h2>
+          <div class="search-fields-wrapper">
             <div class="search-field">
               <button (click)="getPokemonByRandom = true" (click)="displayMode = 'single_pokemon'">Get a random
                 pokemon</button>
             </div>
-          </div>
-          <div class="multiple-pokemon-search" (click)="displayMode = 'multiple_pokemons'">
             <div class="search-field">
-              <h3>Filter by type</h3>
-              <input type="text" [(ngModel)]="type">
+              <h5>Filter by name or <br> pokedex number</h5>
+              <!-- Voir si on peut faire ça de manière plus élégante mais pb avec le click qui ne passait pas à travers la div single pokemon-->
+              <input type="text" [(ngModel)]="nameOrPokedexNumber" (click)="displayMode = 'single_pokemon'">
             </div>
             <div class="search-field">
-              <h3>Filter by generation</h3>
-              <input type="text" [(ngModel)]="generation">
+              <h4>Filter by type</h4>
+              <input type="text" [(ngModel)]="type" (click)="displayMode = 'multiple_pokemons'">
+            </div>
+            <div class="search-field">
+              <h4>Filter by generation</h4>
+              <input type="text" [(ngModel)]="generation" (click)="displayMode = 'multiple_pokemons'">
             </div>
           </div>
         </div>
@@ -31,7 +29,7 @@
           <pokemon-card [getPokemonByRandom]="getPokemonByRandom" [nameOrPokedexNumber]="nameOrPokedexNumber"
             (pokemonFetched)="getPokemonByRandom = false" (pokemonClicked)="onPokemonClicked($event)" />
           }
-  
+
           @if (displayMode == 'multiple_pokemons') {
           <!--  -->
           <!-- implémenter un système de double filtre génération + type si les deux sont saisis ? -->
@@ -43,14 +41,17 @@
           }
         </div>
       </div>
-      <div class="pokemon-team-wrapper">
-        <h1>Your pokemon team</h1>
-        <div class="pokemon-team">
-          @for (pokemon of pokemonsToDisplay; track pokemon) {
-          <team-pokemon-card [pokemon]="pokemon" (pokemonToRemove)="onPokemonToRemove(pokemon)"></team-pokemon-card>
-          } @empty {
-          <h3>Click on a pokemon to add it to your team</h3>
-          }
+      <div>
+        <div class="adjustment-div"> </div>
+        <div class="pokemon-team-wrapper">
+          <h2>Your pokemon team</h2>
+          <div class="pokemon-team">
+            @for (pokemon of pokemonsToDisplay; track pokemon) {
+            <team-pokemon-card [pokemon]="pokemon" (pokemonToRemove)="onPokemonToRemove(pokemon)"></team-pokemon-card>
+            } @empty {
+            <h3 class="call-to-action-message">Click on a pokemon to add it to your team</h3>
+            }
+          </div>
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@
         @for (pokemon of pokemonTeam; track pokemon) {
             <moves-pokemon-card [pokemon]="pokemon"> </moves-pokemon-card>
         } @empty {
-            <h3>Get at least one pokemon in you team to choose its moves</h3>
+            <h3 class="call-to-action-message">Get at least one pokemon in you team to choose its moves</h3>
         }
     </div>
 </main>
