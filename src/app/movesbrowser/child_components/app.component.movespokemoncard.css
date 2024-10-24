@@ -1,9 +1,11 @@
 .moves-pokemon-card {
     display: inline-flex;
     align-items: center;
-    background-color: gray;
-    border: 3px solid red;
+    background-color: #30354B;
+    border: 3px solid #E7E8E9;
     border-radius: 30px;
+    margin-top: 3vw;
+    margin-bottom: 3vw;
 }
 
 .moves-list {

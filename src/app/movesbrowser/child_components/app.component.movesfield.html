@@ -1,10 +1,12 @@
 <div>
-    <select [(ngModel)]="selectedMove" (change)="onMoveChange()" class="select-field">
+    <select [(ngModel)]="selectedMove" (change)="onMoveChange()"
+    [ngClass]="{'select-field-empty': selectedMove === '', 'select-field' : selectedMove !== '' }">
         <option value=""> Select a move </option>
         @for (move of availableMovesList; track move) {
             <ng-container *ngIf="selectedMovesList.indexOf(move) === -1">
                 <option [value]="move">{{ move }}</option>
             </ng-container>
+            <!-- pk tout est en gras !? -->
             <ng-container *ngIf="move === selectedMove">
                 <option [value]="move" class="selected-move">{{ move }}</option>
             </ng-container>

@@ -9,7 +9,7 @@ import { Pokemon } from '../../pokemon.interface';
     template: `
     <div (click)="removePokemonUrl()">
         @if (pokemon) {
-        <img [src]="pokemon.sprites.official_front_default" alt="Photo de pokemon" height="100">
+        <img [src]="pokemon.sprites.official_front_default" alt="Photo de pokemon" class="pokemon-image">
         }
     </div>
   `,

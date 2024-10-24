@@ -1,4 +1,45 @@
+/* 
+--- COLOR PALETTE ---
+couleur majoritaire : #191D34
+couleur secondaire : #30354B
+bordure : #FF1F1F
+call to action : #E7E8E9
+*/
+
+
+@font-face {
+    font-family: 'PixelatedFont';
+    src: url('./assets/fonts/Retro\ Gaming.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    background-color: #191D34;
+}
+
+h1, h2, h3, h4 {
+    color: #E7E8E9;
+    font-family: 'PixelatedFont', sans-serif;
+}
+
+input[type="text"], button, select {
+    font-family: 'PixelatedFont', sans-serif;
+}
+
+button {
+    color: #FF1F1F;
+    border: 3px solid #FF1F1F;
+    border-radius: 15px;
+}
+
+option {
+    color: #191D34;
+}
+
 .pokemon-image {
     height: 100px;
     margin: 1vw;
+    background-color: #30354B;
+    border-radius: 25px;
 }

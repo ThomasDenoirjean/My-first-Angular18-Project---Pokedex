@@ -11,7 +11,7 @@ import { Pokemon } from '../../pokemon.interface';
     template: `
     <div (click)="emitPokemon()">
         @if (pokemonToDisplay) {
-        <img [src]="pokemonToDisplay.sprites.official_front_default" alt="Photo de pokemon" height="100">
+        <img [src]="pokemonToDisplay.sprites.official_front_default" alt="Photo de pokemon" class="pokemon-image">
         }
     </div>
   `,

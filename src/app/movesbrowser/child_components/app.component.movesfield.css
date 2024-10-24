@@ -1,3 +1,10 @@
+.select-field-empty {
+    margin: 0.1vw;
+    color: #FF1F1F;
+    border: 3px solid #FF1F1F;
+    border-radius: 5px;
+}
+
 .select-field {
     margin: 0.1vw;
 }
