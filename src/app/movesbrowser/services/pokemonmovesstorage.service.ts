@@ -13,6 +13,4 @@ export class PokemonMovesStorageService {
   updateSelectedMoves(pokemonAppId: number, selectedMoves: string[]) {
     this.movesStorage[pokemonAppId] = [...selectedMoves];
   }
-
-  //// FIXME ça ne fonctionne pas
 }

@@ -26,8 +26,6 @@ export class MovesField implements OnInit {
         }
     }
 
-    //// FIXME c'est ici que ce trouve le bug, ça reprend la valuer '' par défaut
-
     onMoveChange() {
         this.moveSelected.emit({move: this.selectedMove, index: this.moveIndex});
     }

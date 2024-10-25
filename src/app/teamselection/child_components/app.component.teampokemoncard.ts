@@ -22,8 +22,6 @@ export class TeamPokemonCard implements OnInit {
     ngOnInit(): void { 
     }
 
-    //// FIXME le problème vient du fait qu'ils ont tous les meme AppId une fois dans la page MovesBrowser
-
     removePokemon() {
         this.pokemonToRemove.emit(this.pokemon)
     }

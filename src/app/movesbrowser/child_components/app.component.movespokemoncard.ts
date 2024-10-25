@@ -35,6 +35,4 @@ export class MovesPokemonCard implements OnInit {
 
         this.pokemonMovesStorageService.updateSelectedMoves(this.pokemon.appId, this.selectedMovesList);
     }
-
-    ///// FIXME ça fonctionne pas avec l'app ID
 }  

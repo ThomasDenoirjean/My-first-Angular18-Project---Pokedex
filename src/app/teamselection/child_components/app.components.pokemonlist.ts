@@ -6,13 +6,6 @@ import { Pokemon } from '../../pokemon.interface';
 import { FetchPokemonByNameOrPokedexNumberService } from '../services/fetchpokemonbynameorpokedexnumber.service';
 import { FetchPokemonsByGenerationService } from '../services/fetchpokemonsbygeneration.service';
 
-// pour la suite : passer les urls des pokemons en inputde pokemon card
-// mettre un defer avec une petite animation de pokéball
-
-// doit recevoir une liste soit de pokémon par type soir par génération
-
-// travailler plus tard avec l'id des pokemons pour éviter que ça n'arrive pas à fetch par les noms
-
 @Component({
     selector: 'pokemon-list',
     standalone: true,
