@@ -31,7 +31,6 @@ export class PokemonCard implements OnChanges {
     ) { }
 
     emitPokemon() {
-        console.log('this.pokemonToDisplay', this.pokemonToDisplay)
         this.pokemonClicked.emit(this.pokemonToDisplay);
     }
 

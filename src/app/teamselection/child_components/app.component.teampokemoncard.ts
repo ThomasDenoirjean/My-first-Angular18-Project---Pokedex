@@ -7,7 +7,7 @@ import { Pokemon } from '../../pokemon.interface';
     standalone: true,
     imports: [RouterOutlet],
     template: `
-    <div (click)="removePokemonUrl()">
+    <div (click)="removePokemon()">
         @if (pokemon) {
         <img [src]="pokemon.sprites.official_front_default" alt="Photo de pokemon" class="team-pokemon-image">
         }
@@ -19,9 +19,12 @@ export class TeamPokemonCard implements OnInit {
 
     @Output() pokemonToRemove = new EventEmitter<Pokemon>();
 
-    ngOnInit(): void { }
+    ngOnInit(): void { 
+    }
 
-    removePokemonUrl() {
+    //// FIXME le problème vient du fait qu'ils ont tous les meme AppId une fois dans la page MovesBrowser
+
+    removePokemon() {
         this.pokemonToRemove.emit(this.pokemon)
     }
 }    

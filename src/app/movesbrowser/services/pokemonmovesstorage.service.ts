@@ -4,16 +4,14 @@ import { Injectable } from '@angular/core';
   providedIn: 'root',
 })
 export class PokemonMovesStorageService {
-  private movesStorage: { [pokemonName: string]: string[] } = {};
+  private movesStorage: { [pokemonAppId: number]: string[] } = {};
 
-  getSelectedMoves(pokemonName: string): string[] {
-    console.log('this.movesStorage[pokemonName]', this.movesStorage[pokemonName])
-    return this.movesStorage[pokemonName] || ['', '', '', ''];
+  getSelectedMoves(pokemonAppId: number): string[] {
+    return this.movesStorage[pokemonAppId] || ['', '', '', ''];
   }
 
-  updateSelectedMoves(pokemonName: string, selectedMoves: string[]) {
-    this.movesStorage[pokemonName] = [...selectedMoves];
-    console.log('this.movesStorage[pokemonName]', this.movesStorage[pokemonName])
+  updateSelectedMoves(pokemonAppId: number, selectedMoves: string[]) {
+    this.movesStorage[pokemonAppId] = [...selectedMoves];
   }
 
   //// FIXME ça ne fonctionne pas

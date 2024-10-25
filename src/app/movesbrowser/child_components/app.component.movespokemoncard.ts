@@ -27,14 +27,14 @@ export class MovesPokemonCard implements OnInit {
             this.availableMovesList = response
         })
 
-        this.selectedMovesList = this.pokemonMovesStorageService.getSelectedMoves(this.pokemon.name);
-
-        console.log('this.selectedMovesList OnInit Bloc', this.selectedMovesList)
+        this.selectedMovesList = this.pokemonMovesStorageService.getSelectedMoves(this.pokemon.appId);
     }
 
     onMoveSelected(moveAndIndex: {move: string, index: number}) {
         this.selectedMovesList[moveAndIndex.index] = moveAndIndex.move
 
-        this.pokemonMovesStorageService.updateSelectedMoves(this.pokemon.name, this.selectedMovesList);
+        this.pokemonMovesStorageService.updateSelectedMoves(this.pokemon.appId, this.selectedMovesList);
     }
+
+    ///// FIXME ça fonctionne pas avec l'app ID
 }  

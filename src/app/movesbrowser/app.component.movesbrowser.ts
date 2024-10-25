@@ -19,7 +19,6 @@ export class PokemonMovesBrower implements OnInit {
     ngOnInit(): void {
         this.teamService.pokemonTeam$.subscribe((team: Pokemon[]) => {
           this.pokemonTeam = team;
-          console.log('Updated Pokemon team:', this.pokemonTeam);
         });
     }
 }  

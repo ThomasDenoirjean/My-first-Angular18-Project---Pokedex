@@ -39,8 +39,6 @@ export class PokemonList implements OnChanges {
     ) { }
 
     emitPokemon(pokemon: Pokemon) {
-        console.log('pokemon', pokemon)
-        // je ne comprends pas pk ça me donne toutes les datas du pokemon
         this.pokemonClicked.emit(pokemon);
     }
 
@@ -52,7 +50,6 @@ export class PokemonList implements OnChanges {
 
                 this.fetchPokemonsByTypeService.getPokemonsByType(this.type).subscribe((response) => {
                     response.forEach(pokemon => {
-                        console.log('pokemon', pokemon)
                         this.pokemonsList.push(pokemon);
                     });
                 });
@@ -65,7 +62,6 @@ export class PokemonList implements OnChanges {
 
                 this.fetchPokemonsByGenerationService.getPokemonsByGeneration(this.generation).subscribe((response) => {
                     response.forEach(pokemon => {
-                        console.log('pokemon', pokemon)
                         this.pokemonsList.push(pokemon);
                     });
                 });

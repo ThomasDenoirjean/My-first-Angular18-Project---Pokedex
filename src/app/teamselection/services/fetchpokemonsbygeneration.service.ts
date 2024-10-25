@@ -21,8 +21,6 @@ export class FetchPokemonsByGenerationService {
     ) { }
 
     getPokemonsByGeneration(generation: number): Observable<Pokemon[]> {
-        console.log('generation', generation);
-
         let apiUrl = `https://pokeapi.co/api/v2/generation/${generation}/`;
 
         return this.http.get<PokemonGenerationResponse>(apiUrl).pipe(
